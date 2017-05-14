@@ -1,5 +1,7 @@
 # tunnelup
 
+[![Build Status](https://travis-ci.org/tunnelup/tunnelup-cli.svg?branch=master)](https://travis-ci.org/tunnelup/tunnelup-cli)
+
 TODO: Write a description here
 
 ## Installation
