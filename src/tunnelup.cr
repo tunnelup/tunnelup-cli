@@ -1,5 +1,7 @@
+require "http"
+require "json"
+
 require "./tunnelup/*"
+require "./tunnelup/models/*"
 
-module Tunnelup
-
-end
+Tunnelup::Cli.run

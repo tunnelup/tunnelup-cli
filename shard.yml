@@ -8,6 +8,15 @@ targets:
   tunnelup:
     main: src/tunnelup.cr
 
+dependencies:
+  admiral:
+    github: jwaldrip/admiral.cr
+
+development_dependencies:
+  webmock:
+    github: manastech/webmock.cr
+    branch: master
+
 crystal: 0.22.0
 
 license: MIT
