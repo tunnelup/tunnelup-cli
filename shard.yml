@@ -1,0 +1,13 @@
+name: tunnelup
+version: 0.1.0
+
+authors:
+  - George Drummond <georgedrummond@gmail.com>
+
+targets:
+  tunnelup:
+    main: src/tunnelup.cr
+
+crystal: 0.22.0
+
+license: MIT
