@@ -1,4 +1,4 @@
-require "./spec_helper"
+require "./../spec_helper"
 
 describe Tunnelup::Models::User do
   describe ".from_json" do
