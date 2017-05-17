@@ -1,12 +1,5 @@
-require "admiral"
-
 class Tunnelup::Cli < Admiral::Command
-  class Authorize < Admiral::Command
-    def run
-      puts "Authorizing"
-    end
-  end
-  register_sub_command "hi", Authorize
+  register_sub_command "whoami", ::Tunnelup::Commands::Whoami
 
   define_argument port, default: 8080
 
