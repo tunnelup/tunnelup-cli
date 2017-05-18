@@ -13,6 +13,8 @@ module Tunnelup
         )
 
         puts user.to_json
+      rescue Tunnelup::UnauthorizedError
+        puts "Invalid login attempt"
       end
     end
   end
