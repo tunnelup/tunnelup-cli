@@ -24,6 +24,11 @@ module FakeApi
       .to_return(body: json, status: 201)
   end
 
+  def stub_api_login_failure
+    WebMock.stub(:post, "https://tunnelup.com/api/v1/sessions")
+      .to_return(body: "Unauthorized", status: 401)
+  end
+
   def stub_api_get_user_success
     json = %(
       {

@@ -13,13 +13,26 @@ describe Tunnelup::Client do
     context "success" do
       it "returns Tunnelup::Models::User" do
         FakeApi.stub_api_login_success
-        
+
         user = Tunnelup::Client.login(
           email: "georgedrummond@gmail.com",
           password: "password"
         )
 
         user.class.should eq Tunnelup::Models::User
+      end
+    end
+
+    context "failure" do
+      it "raises Tunnelup::UnauthorizedError" do
+        FakeApi.stub_api_login_failure
+
+        expect_raises Tunnelup::UnauthorizedError do
+          Tunnelup::Client.login(
+            email: "georgedrummond@gmail.com",
+            password: "password"
+          )
+        end
       end
     end
   end

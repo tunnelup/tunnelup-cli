@@ -25,6 +25,10 @@ module Tunnelup
         body: json.to_json,
       )
 
+      if response.status_code == 401
+        raise Tunnelup::UnauthorizedError.new("Unauthorized API response")
+      end
+
       Tunnelup::Models::User.from_json(response.body)
     end
 
