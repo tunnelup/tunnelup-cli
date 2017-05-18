@@ -1,5 +1,5 @@
 require "admiral"
-require "http"
+require "http/client"
 require "json"
 
 require "./tunnelup/commands/*"

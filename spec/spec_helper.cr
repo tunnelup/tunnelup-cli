@@ -1,4 +1,5 @@
 require "spec"
+require "secure_random"
 require "webmock"
 
 require "../src/tunnelup"
