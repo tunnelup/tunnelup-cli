@@ -1,6 +1,10 @@
-.PHONY: test
+.PHONY: test deps
 
-build:
+build : deps
 	crystal build src/tunnelup.cr --release
-test:
+
+test : deps
 	crystal spec
+
+deps :
+	crystal deps
