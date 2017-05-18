@@ -2,7 +2,7 @@ module Tunnelup
   class UnauthorizedError < Exception; end
 
   class Client
-    API_BASE = "https://tunnelup.com/api/v1"
+    include ::Tunnelup::ApiHelpers
 
     getter :api_key
 
@@ -47,38 +47,5 @@ module Tunnelup
     #
     #   Tunnelup::Tunnel.new(json: json)
     # end
-
-    private def url_from_path(path : String)
-      "#{API_BASE}#{path}"
-    end
-
-    private def post(path : String, opts : NamedTuple)
-      response = HTTP::Client.post(
-        url: url_from_path(path),
-        headers: default_headers,
-      )
-
-      JSON.parse(response.body)
-    end
-
-    private def get(path : String)
-      response = HTTP::Client.get(
-        url: url_from_path(path),
-        headers: default_headers,
-      )
-
-      if response.status_code == 401
-        raise Tunnelup::UnauthorizedError.new("Unauthorized API response")
-      end
-
-      response
-    end
-
-    private def default_headers
-      HTTP::Headers{
-        "User-Agent" => "tunnelup-cli",
-        "Authorization" => "Token token=#{api_key}"
-      }
-    end
   end
 end
