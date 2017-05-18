@@ -11,9 +11,7 @@ class Tunnelup::Cli < Admiral::Command
   define_flag port : Int32, default: 3000, description: "Local port"
 
   def run
-    # client = Tunnelup::Client.new(api_key: "Hello")
-    # client.create_tunnel(opts: {
-    #   local: "yes"
-    # })
+    # user = Tunnelup::Client.login(email: "georgedrummond@gmail.com", password: "password")
+    # puts user.to_json
   end
 end

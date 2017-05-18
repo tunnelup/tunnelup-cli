@@ -9,6 +9,25 @@ module Tunnelup
     def initialize(@api_key : String)
     end
 
+    def self.login(email : String, password : String)
+      json = {
+        user: {
+          email: email,
+          password: password,
+        }
+      }
+
+      response = HTTP::Client.post(
+        url: "#{API_BASE}/sessions",
+        headers: HTTP::Headers{
+          "Content-Type" => "application/json",
+        },
+        body: json.to_json,
+      )
+
+      Tunnelup::Models::User.from_json(response.body)
+    end
+
     def get_current_user
       response = get("/users/me")
       Tunnelup::Models::User.from_json(response.body)

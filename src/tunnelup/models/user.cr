@@ -2,8 +2,9 @@ module Tunnelup
   module Models
     class User
       JSON.mapping(
-        id: String,
+        api_token: String,
         email: String,
+        id: String,
       )
     end
   end

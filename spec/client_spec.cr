@@ -9,6 +9,21 @@ describe Tunnelup::Client do
     end
   end
 
+  describe "#login" do
+    context "success" do
+      it "returns Tunnelup::Models::User" do
+        FakeApi.stub_api_login_success
+        
+        user = Tunnelup::Client.login(
+          email: "georgedrummond@gmail.com",
+          password: "password"
+        )
+
+        user.class.should eq Tunnelup::Models::User
+      end
+    end
+  end
+
   describe "#get_subdomains" do
     context "success" do
 
@@ -27,7 +42,7 @@ describe Tunnelup::Client do
 
   describe "#get_current_user" do
     context "success" do
-      it "returns a Tunnelup::User" do
+      it "returns a Tunnelup::Models::User" do
         FakeApi.stub_api_get_user_success
 
         FakeApi.client.get_current_user.class.should eq Tunnelup::Models::User
