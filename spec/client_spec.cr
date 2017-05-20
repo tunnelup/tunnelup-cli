@@ -37,6 +37,19 @@ describe Tunnelup::Client do
     end
   end
 
+  describe "#signup" do
+    context "success" do
+      FakeApi.stub_api_signup_success
+
+      user = Tunnelup::Client.signup(
+        email: "georgedrummond@gmail.com",
+        password: "password"
+      )
+
+      user.class.should eq Tunnelup::Models::User
+    end
+  end
+
   describe "#get_subdomains" do
     context "success" do
 

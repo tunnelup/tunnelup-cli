@@ -24,6 +24,19 @@ module FakeApi
       .to_return(body: json, status: 201)
   end
 
+  def stub_api_signup_success
+    json = %(
+      {
+        "api_token": "random",
+        "email": "georgedrummond@gmail.com",
+        "id": "1234"
+      }
+    )
+
+    WebMock.stub(:post, "https://tunnelup.com/api/v1/users")
+      .to_return(body: json, status: 201)
+  end
+
   def stub_api_login_failure
     WebMock.stub(:post, "https://tunnelup.com/api/v1/sessions")
       .to_return(body: "Unauthorized", status: 401)
