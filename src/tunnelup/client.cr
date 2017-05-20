@@ -48,7 +48,7 @@ module Tunnelup
         body: json.to_json,
       )
 
-      if response.status_code == 401
+      if response.status_code == 400
         raise Tunnelup::UnauthorizedError.new("Unauthorized API response")
       end
 

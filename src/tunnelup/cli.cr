@@ -1,6 +1,7 @@
 class Tunnelup::Cli < Admiral::Command
   register_sub_command "whoami", ::Tunnelup::Commands::Whoami
   register_sub_command "login",  ::Tunnelup::Commands::Login
+  register_sub_command "signup",  ::Tunnelup::Commands::Signup
 
   define_argument port, default: 8080
 
